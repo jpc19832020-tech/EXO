@@ -9,8 +9,8 @@ git init
 git add .
 git commit -m "Initial commit: EXO Digital Studio"
 
-# Reemplaza TU-USUARIO con tu usuario de GitHub
-git remote add origin https://github.com/TU-USUARIO/EXO.git
+# Reemplaza con tu repositorio
+git remote add origin https://github.com/jpc19832020-tech/EXO.git
 git branch -M main
 git push -u origin main
 ```
@@ -27,7 +27,7 @@ git push -u origin main
 
 Tu sitio estará disponible en:
 ```
-https://TU-USUARIO.github.io/EXO/
+https://jpc19832020-tech.github.io/EXO/
 ```
 
 Espera 1-2 minutos para que se publique.
