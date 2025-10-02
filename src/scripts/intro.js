@@ -1,19 +1,21 @@
 /**
  * INTRO ÉPICA - CONTROLADOR DE ANIMACIÓN
- * Sistema de animación tipográfica sin parpadeos
+ * Sistema de animación con barra de carga y frases tipográficas
  */
 
 class IntroController {
   constructor() {
     this.overlay = null;
+    this.loadingContainer = null;
+    this.textsContainer = null;
     this.texts = [
       'CREAMOS HISTORIAS',
       'INSPIRAMOS CAMBIOS',
       'ELEVAMOS MARCAS'
     ];
     this.currentTextIndex = 0;
+    this.loadingDuration = 2000; // 2 segundos para la barra de carga
     this.textDuration = 2000; // 2 segundos por texto
-    this.logoDuration = 2000; // 2 segundos para el logo
     this.fadeOutDuration = 1000; // 1 segundo para fade out
     this.isReducedMotion = false;
     
@@ -46,8 +48,8 @@ class IntroController {
     
     // Ajustar duraciones si hay reduced motion
     if (this.isReducedMotion) {
+      this.loadingDuration = 500;
       this.textDuration = 500;
-      this.logoDuration = 1000;
       this.fadeOutDuration = 300;
     }
   }
@@ -61,15 +63,39 @@ class IntroController {
     this.overlay.setAttribute('role', 'presentation');
     this.overlay.setAttribute('aria-live', 'polite');
     
-    // Agregar loading dots (opcional)
-    const loadingDots = document.createElement('div');
-    loadingDots.className = 'intro-loading';
-    loadingDots.innerHTML = `
-      <div class="intro-loading-dot"></div>
-      <div class="intro-loading-dot"></div>
-      <div class="intro-loading-dot"></div>
-    `;
-    this.overlay.appendChild(loadingDots);
+    // Crear contenedor de carga
+    this.loadingContainer = document.createElement('div');
+    this.loadingContainer.className = 'intro-loading-container';
+    
+    const logo = document.createElement('img');
+    logo.src = './EXOlogo.png';
+    logo.alt = 'EXO Digital Studio';
+    logo.className = 'intro-loading-logo';
+    
+    const loadingBar = document.createElement('div');
+    loadingBar.className = 'intro-loading-bar';
+    
+    const loadingProgress = document.createElement('div');
+    loadingProgress.className = 'intro-loading-progress';
+    
+    loadingBar.appendChild(loadingProgress);
+    this.loadingContainer.appendChild(logo);
+    this.loadingContainer.appendChild(loadingBar);
+    
+    // Crear contenedor de textos
+    this.textsContainer = document.createElement('div');
+    this.textsContainer.className = 'intro-texts-container';
+    
+    this.texts.forEach(text => {
+      const textElement = document.createElement('div');
+      textElement.className = 'intro-text';
+      textElement.textContent = text;
+      textElement.setAttribute('aria-label', text);
+      this.textsContainer.appendChild(textElement);
+    });
+    
+    this.overlay.appendChild(this.loadingContainer);
+    this.overlay.appendChild(this.textsContainer);
     
     document.body.insertBefore(this.overlay, document.body.firstChild);
   }
@@ -91,16 +117,14 @@ class IntroController {
   }
   
   /**
-   * Animación completa con todos los textos
+   * Animación completa
    */
   async runFullIntro() {
-    // Animar cada texto
-    for (let i = 0; i < this.texts.length; i++) {
-      await this.animateText(this.texts[i]);
-    }
+    // Fase 1: Barra de carga
+    await this.runLoadingPhase();
     
-    // Mostrar logo y tagline
-    await this.showLogo();
+    // Fase 2: Frases animadas
+    await this.runTextsPhase();
     
     // Fade out completo
     await this.fadeOut();
@@ -113,78 +137,73 @@ class IntroController {
    * Animación simple para reduced motion
    */
   async runSimpleIntro() {
-    // Solo mostrar logo brevemente
-    await this.showLogo();
+    // Mostrar logo brevemente
+    await this.runLoadingPhase();
+    
+    // Mostrar una frase
+    await this.showText(0);
+    
+    // Fade out
     await this.fadeOut();
     this.cleanup();
   }
   
   /**
-   * Animar un texto individual
+   * Ejecutar fase de carga
    */
-  animateText(text) {
+  runLoadingPhase() {
     return new Promise((resolve) => {
-      // Crear elemento de texto
-      const textElement = document.createElement('div');
-      textElement.className = 'intro-text';
-      textElement.textContent = text;
-      textElement.setAttribute('aria-label', text);
+      // Mostrar contenedor de carga
+      this.loadingContainer.classList.add('active');
       
-      this.overlay.appendChild(textElement);
-      
-      // Activar animación
+      // Esperar a que termine la animación de la barra
       setTimeout(() => {
-        textElement.classList.add('active');
-      }, 50);
-      
-      // Remover después de la duración
-      setTimeout(() => {
-        textElement.classList.remove('active');
-        textElement.classList.add('exit');
+        this.loadingContainer.classList.remove('active');
+        this.loadingContainer.classList.add('exit');
         
+        // Esperar fade out
         setTimeout(() => {
-          textElement.remove();
+          this.loadingContainer.style.display = 'none';
           resolve();
         }, 500);
-      }, this.textDuration);
+      }, this.loadingDuration);
     });
   }
   
   /**
-   * Mostrar logo y tagline
+   * Ejecutar fase de textos
    */
-  showLogo() {
+  async runTextsPhase() {
+    // Mostrar contenedor de textos
+    this.textsContainer.classList.add('active');
+    
+    // Animar cada texto secuencialmente
+    for (let i = 0; i < this.texts.length; i++) {
+      await this.showText(i);
+    }
+  }
+  
+  /**
+   * Mostrar un texto individual
+   */
+  showText(index) {
     return new Promise((resolve) => {
-      // Crear contenedor de logo
-      const logoContainer = document.createElement('div');
-      logoContainer.className = 'intro-logo-container';
+      const textElements = this.textsContainer.querySelectorAll('.intro-text');
+      const textElement = textElements[index];
       
-      // Logo
-      const logo = document.createElement('img');
-      logo.src = './EXOlogo.png';
-      logo.alt = 'EXO Digital Studio';
-      logo.className = 'intro-logo';
-      
-      // Tagline
-      const tagline = document.createElement('div');
-      tagline.className = 'intro-tagline';
-      tagline.textContent = 'Innovación que Conecta';
-      
-      logoContainer.appendChild(logo);
-      logoContainer.appendChild(tagline);
-      this.overlay.appendChild(logoContainer);
+      if (!textElement) {
+        resolve();
+        return;
+      }
       
       // Activar animación
-      setTimeout(() => {
-        logoContainer.classList.add('active');
-      }, 50);
+      textElement.classList.add('active');
       
-      // Mantener visible por la duración especificada
+      // Remover después de la duración
       setTimeout(() => {
-        logoContainer.classList.remove('active');
-        logoContainer.classList.add('exit');
+        textElement.classList.remove('active');
         resolve();
-      }, this.logoDuration);
+      }, this.textDuration);
     });
   }
   

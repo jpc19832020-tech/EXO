@@ -1,5 +1,6 @@
 /* ============================================
    INTRO ÉPICA - ANIMACIÓN TIPOGRÁFICA
+   Con Barra de Carga y Fondo Negro
    ============================================ */
 
 /* Overlay principal */
@@ -10,7 +11,7 @@
   width: 100vw;
   height: 100vh;
   z-index: 9999;
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  background: #000000;  /* Negro puro */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -22,6 +23,79 @@
 #intro-overlay.fade-out {
   opacity: 0;
   pointer-events: none;
+}
+
+/* ============================================
+   FASE 1: PANTALLA DE CARGA
+   ============================================ */
+
+.intro-loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  opacity: 0;
+}
+
+.intro-loading-container.active {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.intro-loading-container.exit {
+  animation: fadeOut 0.5s ease-out forwards;
+}
+
+/* Logo de carga */
+.intro-loading-logo {
+  width: 150px;
+  height: auto;
+  filter: drop-shadow(0 4px 20px rgba(0, 212, 255, 0.3))
+          drop-shadow(0 2px 10px rgba(255, 0, 110, 0.2));
+}
+
+/* Barra de carga */
+.intro-loading-bar {
+  width: 200px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+
+.intro-loading-progress {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #00d4ff, #ff006e);
+  border-radius: 2px;
+  animation: loadingProgress 2s ease-out forwards;
+}
+
+@keyframes loadingProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* ============================================
+   FASE 2: FRASES ANIMADAS
+   ============================================ */
+
+.intro-texts-container {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+}
+
+.intro-texts-container.active {
+  opacity: 1;
 }
 
 /* Contenedor de texto animado */
@@ -45,69 +119,20 @@
 
 /* Estados de animación */
 .intro-text.active {
-  animation: textFadeInUp 2s ease-out forwards;
+  animation: textFadeInOut 2s ease-out forwards;
 }
 
-.intro-text.exit {
-  animation: textFadeOut 1s ease-out forwards;
-}
-
-/* Logo container */
-.intro-logo-container {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.5rem;
-  opacity: 0;
-  transform: scale(0.9);
-}
-
-.intro-logo-container.active {
-  animation: logoFadeIn 1s ease-out forwards;
-}
-
-.intro-logo-container.exit {
-  animation: logoFadeOut 1s ease-out forwards;
-}
-
-/* Logo */
-.intro-logo {
-  max-width: 300px;
-  width: 80vw;
-  height: auto;
-  filter: drop-shadow(0 8px 32px rgba(0, 212, 255, 0.5))
-          drop-shadow(0 4px 16px rgba(255, 0, 110, 0.3));
-  animation: logoPulse 3s ease-in-out infinite;
-}
-
-/* Tagline */
-.intro-tagline {
-  font-family: var(--font-primary), sans-serif;
-  font-size: clamp(1rem, 3vw, 1.5rem);
-  font-weight: 300;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #00d4ff, #ffffff, #ff006e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-align: center;
-  opacity: 0;
-  animation: taglineFadeIn 1s ease-out 0.5s forwards;
-}
-
-/* Animaciones */
-@keyframes textFadeInUp {
+/* Animaciones de texto */
+@keyframes textFadeInOut {
   0% {
     opacity: 0;
     transform: translateY(30px);
   }
-  20% {
+  15% {
     opacity: 1;
     transform: translateY(0);
   }
-  80% {
+  85% {
     opacity: 1;
     transform: translateY(0);
   }
@@ -117,166 +142,88 @@
   }
 }
 
-@keyframes textFadeOut {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-30px);
-  }
-}
-
-@keyframes logoFadeIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  50% {
-    transform: scale(1.05);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes logoFadeOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-}
-
-@keyframes taglineFadeIn {
+/* Animaciones generales */
+@keyframes fadeIn {
   from {
     opacity: 0;
-    letter-spacing: 0.5em;
   }
   to {
     opacity: 1;
-    letter-spacing: 0.3em;
   }
 }
 
-@keyframes logoPulse {
-  0%, 100% {
-    filter: drop-shadow(0 8px 32px rgba(0, 212, 255, 0.5))
-            drop-shadow(0 4px 16px rgba(255, 0, 110, 0.3));
-  }
-  50% {
-    filter: drop-shadow(0 12px 48px rgba(0, 212, 255, 0.7))
-            drop-shadow(0 6px 24px rgba(255, 0, 110, 0.5));
-  }
-}
-
-/* Loading indicator (opcional) */
-.intro-loading {
-  position: absolute;
-  bottom: 3rem;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 0.5rem;
-  opacity: 0;
-  animation: fadeIn 0.5s ease-out 0.5s forwards;
-}
-
-.intro-loading-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: linear-gradient(135deg, #00d4ff, #ff006e);
-  animation: dotPulse 1.4s ease-in-out infinite;
-}
-
-.intro-loading-dot:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.intro-loading-dot:nth-child(3) {
-  animation-delay: 0.4s;
-}
-
-@keyframes dotPulse {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
+@keyframes fadeOut {
+  from {
     opacity: 1;
-    transform: scale(1.2);
+  }
+  to {
+    opacity: 0;
   }
 }
 
-/* Responsive */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 768px) {
+  .intro-loading-logo {
+    width: 100px;
+  }
+  
+  .intro-loading-bar {
+    width: 150px;
+  }
+  
   .intro-text {
     font-size: clamp(1.5rem, 10vw, 3rem);
-    padding: 0 1rem;
-  }
-  
-  .intro-logo {
-    max-width: 200px;
-  }
-  
-  .intro-tagline {
-    font-size: clamp(0.75rem, 3vw, 1rem);
-    letter-spacing: 0.2em;
     padding: 0 1rem;
   }
 }
 
 @media (max-width: 480px) {
+  .intro-loading-logo {
+    width: 80px;
+  }
+  
+  .intro-loading-bar {
+    width: 120px;
+  }
+  
   .intro-text {
     font-size: clamp(1.25rem, 8vw, 2rem);
   }
-  
-  .intro-logo {
-    max-width: 150px;
-  }
-  
-  .intro-loading {
-    bottom: 2rem;
-  }
 }
 
-/* Accesibilidad - Reduced Motion */
+/* ============================================
+   ACCESIBILIDAD - REDUCED MOTION
+   ============================================ */
+
 @media (prefers-reduced-motion: reduce) {
   #intro-overlay {
     animation: none;
     transition: opacity 0.3s ease;
   }
   
-  .intro-text,
-  .intro-logo-container,
-  .intro-tagline {
+  .intro-loading-progress {
+    animation: simpleFill 0.5s ease forwards !important;
+  }
+  
+  .intro-text {
     animation: simpleFade 0.5s ease forwards !important;
   }
   
-  .intro-text.active,
-  .intro-logo-container.active {
-    animation: simpleFade 0.5s ease forwards !important;
+  .intro-loading-container.active,
+  .intro-loading-container.exit {
+    animation: simpleFade 0.3s ease forwards !important;
   }
   
-  .intro-text.exit,
-  .intro-logo-container.exit {
-    animation: simpleFadeOut 0.3s ease forwards !important;
-  }
-  
-  .intro-logo {
-    animation: none !important;
-    filter: drop-shadow(0 4px 16px rgba(0, 212, 255, 0.4));
-  }
-  
-  .intro-loading-dot {
-    animation: none !important;
-    opacity: 0.5;
+  @keyframes simpleFill {
+    from {
+      width: 0%;
+    }
+    to {
+      width: 100%;
+    }
   }
   
   @keyframes simpleFade {
@@ -287,18 +234,9 @@
       opacity: 1;
     }
   }
-  
-  @keyframes simpleFadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
 }
 
-/* Prevencion de flash de contenido */
+/* Prevención de flash de contenido */
 .content-hidden {
   opacity: 0;
   visibility: hidden;

@@ -1,0 +1,21 @@
+{
+  "name": "EXO Digital Studio",
+  "short_name": "EXO",
+  "description": "Innovación que Conecta - Creamos Historias, Inspiramos Cambios, Elevamos Marcas",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#00d4ff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "./EXOlogo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "marketing", "design"],
+  "lang": "es-PE",
+  "dir": "ltr"
+}
