@@ -132,6 +132,7 @@ class IntroController {
    */
   async runFullIntro() {
     // FASE 1: Mostrar barra de carga (3s)
+    this.loadingContainer.style.opacity = '1';
     await this.wait(this.durations.loading);
     
     // FASE 2: Fade out logo y barra simultáneamente (1s)
@@ -149,9 +150,12 @@ class IntroController {
     this.textsContainer.classList.add('active');
     
     // FASE 4-6: Animar cada frase (3.1s cada una)
+    console.log('Iniciando secuencia de frases...');
     for (let i = 0; i < this.texts.length; i++) {
+      console.log(`Mostrando frase ${i + 1}: ${this.texts[i]}`);
       await this.showPhrase(i);
     }
+    console.log('Secuencia de frases completada');
     
     // FADE OUT FINAL: (1s)
     this.overlay.classList.add('fade-out');
