@@ -1,0 +1,93 @@
+{
+  "id": "gestion-redes",
+  "title": "Gestión de Redes Sociales",
+  "slug": "gestion-redes",
+  "category": "Marketing Digital",
+  "shortDescription": "Impulsa tu presencia online con contenido estratégico y atractivo",
+  "heroImage": "./src/images/products/gestion-redes/hero.jpg",
+  "thumbnailImage": "./src/images/products/gestion-redes/thumb.jpg",
+  "description": "<p>¿No tienes tiempo para gestionar tus redes sociales? No te preocupes, nosotros lo hacemos por ti.</p><p>En EXO Digital Studio creamos y publicamos contenido atractivo, respondemos a tu audiencia y analizamos resultados para que puedas enfocarte en hacer crecer tu negocio mientras tu presencia online se fortalece.</p><p>Desarrollamos estrategias personalizadas que generan engagement real, aumentan tu visibilidad y convierten seguidores en clientes.</p>",
+  "benefits": [
+    "Aumenta tu visibilidad y alcance orgánico",
+    "Contenido profesional y consistente",
+    "Mayor engagement con tu audiencia",
+    "Reportes de rendimiento mensuales detallados",
+    "Ahorra tiempo para enfocarte en tu negocio",
+    "Estrategia personalizada para tu nicho"
+  ],
+  "features": [
+    {
+      "icon": "📅",
+      "title": "Calendario de Contenido",
+      "description": "12 publicaciones mensuales estratégicamente planificadas para maximizar alcance y engagement"
+    },
+    {
+      "icon": "✨",
+      "title": "Diseño Profesional",
+      "description": "Cada post diseñado acorde a tu identidad de marca con alta calidad visual"
+    },
+    {
+      "icon": "📱",
+      "title": "Stories Semanales",
+      "description": "4 stories por semana para mantener a tu audiencia conectada e informada"
+    },
+    {
+      "icon": "💬",
+      "title": "Community Management",
+      "description": "Respuesta a comentarios y mensajes directos para mantener la conversación activa"
+    },
+    {
+      "icon": "📊",
+      "title": "Reportes Mensuales",
+      "description": "Análisis detallado de métricas, alcance, engagement y crecimiento de seguidores"
+    },
+    {
+      "icon": "🎯",
+      "title": "Estrategia Personalizada",
+      "description": "Plan de contenido adaptado a tus objetivos de negocio y audiencia objetivo"
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Análisis Inicial",
+      "description": "Evaluamos tu situación actual, audiencia, competencia y objetivos de marketing"
+    },
+    {
+      "step": 2,
+      "title": "Estrategia",
+      "description": "Desarrollamos un plan de contenido personalizado alineado con tus metas de negocio"
+    },
+    {
+      "step": 3,
+      "title": "Creación y Publicación",
+      "description": "Diseñamos contenido atractivo y lo publicamos según el calendario establecido"
+    },
+    {
+      "step": 4,
+      "title": "Monitoreo y Optimización",
+      "description": "Analizamos resultados mensualmente y ajustamos la estrategia para mejores resultados"
+    }
+  ],
+  "cta": {
+    "text": "Comenzar Ahora",
+    "url": "https://wa.me/51925475680?text=Hola, me gustaría contratar la gestión de redes sociales. ¿Tienen disponibilidad?",
+    "secondary": {
+      "text": "Ver Casos de Éxito",
+      "url": "https://www.instagram.com/exo_digitalstudio/"
+    }
+  },
+  "pricing": {
+    "type": "fixed",
+    "amount": "300",
+    "currency": "USD",
+    "period": "mes"
+  },
+  "deliveryTime": "Inicio inmediato",
+  "metadata": {
+    "title": "Gestión de Redes Sociales | EXO Digital Studio",
+    "description": "Impulsa tu presencia online con contenido estratégico y profesional. 12 publicaciones mensuales, stories, community management y reportes.",
+    "keywords": "gestión de redes sociales, community manager, marketing digital, social media, Instagram, Facebook",
+    "ogImage": "./src/images/products/gestion-redes/og.jpg"
+  }
+}

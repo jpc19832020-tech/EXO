@@ -1,0 +1,320 @@
+/* ============================================
+   INTRO ÉPICA - ANIMACIÓN TIPOGRÁFICA
+   ============================================ */
+
+/* Overlay principal */
+#intro-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+#intro-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Contenedor de texto animado */
+.intro-text {
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2rem, 8vw, 5rem);
+  font-weight: 900;
+  text-align: center;
+  color: transparent;
+  background: linear-gradient(135deg, #00d4ff, #ff006e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  padding: 0 2rem;
+  position: absolute;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Estados de animación */
+.intro-text.active {
+  animation: textFadeInUp 2s ease-out forwards;
+}
+
+.intro-text.exit {
+  animation: textFadeOut 1s ease-out forwards;
+}
+
+/* Logo container */
+.intro-logo-container {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.intro-logo-container.active {
+  animation: logoFadeIn 1s ease-out forwards;
+}
+
+.intro-logo-container.exit {
+  animation: logoFadeOut 1s ease-out forwards;
+}
+
+/* Logo */
+.intro-logo {
+  max-width: 300px;
+  width: 80vw;
+  height: auto;
+  filter: drop-shadow(0 8px 32px rgba(0, 212, 255, 0.5))
+          drop-shadow(0 4px 16px rgba(255, 0, 110, 0.3));
+  animation: logoPulse 3s ease-in-out infinite;
+}
+
+/* Tagline */
+.intro-tagline {
+  font-family: var(--font-primary), sans-serif;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 300;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #00d4ff, #ffffff, #ff006e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  opacity: 0;
+  animation: taglineFadeIn 1s ease-out 0.5s forwards;
+}
+
+/* Animaciones */
+@keyframes textFadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes textFadeOut {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+}
+
+@keyframes logoFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes logoFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+}
+
+@keyframes taglineFadeIn {
+  from {
+    opacity: 0;
+    letter-spacing: 0.5em;
+  }
+  to {
+    opacity: 1;
+    letter-spacing: 0.3em;
+  }
+}
+
+@keyframes logoPulse {
+  0%, 100% {
+    filter: drop-shadow(0 8px 32px rgba(0, 212, 255, 0.5))
+            drop-shadow(0 4px 16px rgba(255, 0, 110, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 12px 48px rgba(0, 212, 255, 0.7))
+            drop-shadow(0 6px 24px rgba(255, 0, 110, 0.5));
+  }
+}
+
+/* Loading indicator (opcional) */
+.intro-loading {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  animation: fadeIn 0.5s ease-out 0.5s forwards;
+}
+
+.intro-loading-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #00d4ff, #ff006e);
+  animation: dotPulse 1.4s ease-in-out infinite;
+}
+
+.intro-loading-dot:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.intro-loading-dot:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes dotPulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .intro-text {
+    font-size: clamp(1.5rem, 10vw, 3rem);
+    padding: 0 1rem;
+  }
+  
+  .intro-logo {
+    max-width: 200px;
+  }
+  
+  .intro-tagline {
+    font-size: clamp(0.75rem, 3vw, 1rem);
+    letter-spacing: 0.2em;
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .intro-text {
+    font-size: clamp(1.25rem, 8vw, 2rem);
+  }
+  
+  .intro-logo {
+    max-width: 150px;
+  }
+  
+  .intro-loading {
+    bottom: 2rem;
+  }
+}
+
+/* Accesibilidad - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  #intro-overlay {
+    animation: none;
+    transition: opacity 0.3s ease;
+  }
+  
+  .intro-text,
+  .intro-logo-container,
+  .intro-tagline {
+    animation: simpleFade 0.5s ease forwards !important;
+  }
+  
+  .intro-text.active,
+  .intro-logo-container.active {
+    animation: simpleFade 0.5s ease forwards !important;
+  }
+  
+  .intro-text.exit,
+  .intro-logo-container.exit {
+    animation: simpleFadeOut 0.3s ease forwards !important;
+  }
+  
+  .intro-logo {
+    animation: none !important;
+    filter: drop-shadow(0 4px 16px rgba(0, 212, 255, 0.4));
+  }
+  
+  .intro-loading-dot {
+    animation: none !important;
+    opacity: 0.5;
+  }
+  
+  @keyframes simpleFade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes simpleFadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+}
+
+/* Prevencion de flash de contenido */
+.content-hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.content-visible {
+  opacity: 1;
+  visibility: visible;
+  animation: contentFadeIn 1s ease-out;
+}
+
+@keyframes contentFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "id": "diseno-web-premium",
+  "title": "Diseño Web Premium",
+  "slug": "diseno-web-premium",
+  "category": "Diseño Web",
+  "shortDescription": "Sitios web modernos y responsive que convierten visitantes en clientes",
+  "heroImage": "./src/images/products/diseno-web-premium/hero.jpg",
+  "thumbnailImage": "./src/images/products/diseno-web-premium/thumb.jpg",
+  "description": "<p>En EXO Digital Studio creamos sitios web que no solo se ven increíbles, sino que generan resultados reales para tu negocio.</p><p>Cada proyecto es único y diseñado específicamente para cumplir tus objetivos de negocio, atraer a tu audiencia ideal y convertir visitantes en clientes leales.</p><p>Utilizamos las últimas tecnologías y mejores prácticas de diseño UX/UI para garantizar que tu sitio web sea rápido, accesible y fácil de usar en cualquier dispositivo.</p>",
+  "benefits": [
+    "Diseño 100% personalizado adaptado a tu marca",
+    "Optimización SEO desde el día uno para aparecer en Google",
+    "Responsive en todos los dispositivos (móvil, tablet, desktop)",
+    "Velocidad de carga ultra rápida para mejor experiencia",
+    "Panel de administración intuitivo y fácil de usar",
+    "Soporte técnico por 3 meses incluido"
+  ],
+  "features": [
+    {
+      "icon": "🎨",
+      "title": "Diseño Único",
+      "description": "Creamos una experiencia visual que refleja la esencia de tu marca y conecta con tu audiencia"
+    },
+    {
+      "icon": "📱",
+      "title": "100% Responsive",
+      "description": "Tu sitio se verá perfecto en móviles, tablets y computadoras, garantizando la mejor experiencia"
+    },
+    {
+      "icon": "⚡",
+      "title": "Ultra Rápido",
+      "description": "Optimizado para cargar en menos de 2 segundos, mejorando conversiones y SEO"
+    },
+    {
+      "icon": "🔍",
+      "title": "SEO Optimizado",
+      "description": "Configurado desde el inicio para aparecer en los primeros resultados de búsqueda de Google"
+    },
+    {
+      "icon": "🛠️",
+      "title": "Fácil de Actualizar",
+      "description": "Panel intuitivo para que gestiones tu contenido sin necesidad de conocimientos técnicos"
+    },
+    {
+      "icon": "💬",
+      "title": "Soporte Técnico",
+      "description": "3 meses de asistencia técnica, actualizaciones y respuesta a consultas incluidos"
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Consulta Inicial",
+      "description": "Conversamos sobre tu negocio, objetivos, audiencia y visión del proyecto para entender tus necesidades"
+    },
+    {
+      "step": 2,
+      "title": "Propuesta y Diseño",
+      "description": "Creamos un prototipo visual de tu sitio web para tu aprobación antes de iniciar el desarrollo"
+    },
+    {
+      "step": 3,
+      "title": "Desarrollo",
+      "description": "Construimos tu sitio web con las últimas tecnologías, probando cada funcionalidad"
+    },
+    {
+      "step": 4,
+      "title": "Lanzamiento",
+      "description": "Publicamos tu sitio y te capacitamos en su uso para que puedas gestionarlo fácilmente"
+    }
+  ],
+  "cta": {
+    "text": "Solicitar Cotización",
+    "url": "https://wa.me/51925475680?text=Hola, me interesa el Diseño Web Premium. ¿Podrían enviarme más información?",
+    "secondary": {
+      "text": "Ver Portfolio",
+      "url": "https://www.instagram.com/exo_digitalstudio/"
+    }
+  },
+  "pricing": {
+    "type": "from",
+    "amount": "800",
+    "currency": "USD",
+    "period": "proyecto"
+  },
+  "deliveryTime": "2-4 semanas",
+  "metadata": {
+    "title": "Diseño Web Premium | EXO Digital Studio",
+    "description": "Sitios web modernos y responsive que convierten visitantes en clientes. Diseño personalizado, SEO optimizado y soporte incluido.",
+    "keywords": "diseño web, desarrollo web, sitio web profesional, página web responsive, diseño web Perú",
+    "ogImage": "./src/images/products/diseno-web-premium/og.jpg"
+  }
+}

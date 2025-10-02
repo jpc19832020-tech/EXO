@@ -1,0 +1,93 @@
+{
+  "id": "identidad-marca",
+  "title": "Identidad de Marca Completa",
+  "slug": "identidad-marca",
+  "category": "Branding",
+  "shortDescription": "Construye una marca memorable que conecte con tu audiencia",
+  "heroImage": "./src/images/products/identidad-marca/hero.jpg",
+  "thumbnailImage": "./src/images/products/identidad-marca/thumb.jpg",
+  "description": "<p>Tu marca es mucho más que un logo. Es la personalidad de tu negocio, la promesa que haces a tus clientes y la experiencia que ofreces.</p><p>En EXO Digital Studio creamos identidades de marca completas y cohesivas que te diferencian de la competencia y construyen conexiones emocionales con tu audiencia.</p><p>Desde el concepto inicial hasta la aplicación final, trabajamos contigo para crear una marca auténtica que refleje tus valores y resuene con tus clientes ideales.</p>",
+  "benefits": [
+    "Logo profesional único y registrable",
+    "Identidad visual consistente en todos los canales",
+    "Diferenciación clara en el mercado",
+    "Guía de marca completa y detallada",
+    "Archivos en todos los formatos necesarios",
+    "Consultoría estratégica de branding incluida"
+  ],
+  "features": [
+    {
+      "icon": "✨",
+      "title": "Logo Único",
+      "description": "Diseño de logo profesional con 3 conceptos iniciales para que elijas el que mejor represente tu marca"
+    },
+    {
+      "icon": "🎨",
+      "title": "Paleta de Colores",
+      "description": "Selección estratégica de colores corporativos que transmitan las emociones correctas a tu audiencia"
+    },
+    {
+      "icon": "📝",
+      "title": "Tipografía de Marca",
+      "description": "Selección de fuentes que complementen tu identidad y sean legibles en todos los medios"
+    },
+    {
+      "icon": "💼",
+      "title": "Aplicaciones",
+      "description": "Diseño de tarjetas de presentación, papelería y mockups para visualizar tu marca en acción"
+    },
+    {
+      "icon": "📖",
+      "title": "Manual de Identidad",
+      "description": "Guía completa en PDF con todas las especificaciones para uso correcto de tu marca"
+    },
+    {
+      "icon": "📦",
+      "title": "Archivos Completos",
+      "description": "Logo en todos los formatos: AI, EPS, PDF, PNG, SVG y JPG en alta resolución"
+    }
+  ],
+  "process": [
+    {
+      "step": 1,
+      "title": "Descubrimiento",
+      "description": "Entendemos tu negocio, valores, audiencia y competencia para crear una estrategia de marca sólida"
+    },
+    {
+      "step": 2,
+      "title": "Conceptualización",
+      "description": "Desarrollamos 3 conceptos de logo con diferentes enfoques para tu selección"
+    },
+    {
+      "step": 3,
+      "title": "Refinamiento",
+      "description": "Perfeccionamos el concepto elegido y desarrollamos la identidad visual completa"
+    },
+    {
+      "step": 4,
+      "title": "Entrega",
+      "description": "Recibés todos los archivos, el manual de marca y asesoría sobre cómo implementar tu identidad"
+    }
+  ],
+  "cta": {
+    "text": "Crear Mi Marca",
+    "url": "https://wa.me/51925475680?text=Hola, necesito crear la identidad de marca para mi negocio. ¿Cuál es el proceso?",
+    "secondary": {
+      "text": "Ver Trabajos",
+      "url": "https://www.instagram.com/exo_digitalstudio/"
+    }
+  },
+  "pricing": {
+    "type": "from",
+    "amount": "500",
+    "currency": "USD",
+    "period": "proyecto"
+  },
+  "deliveryTime": "1-2 semanas",
+  "metadata": {
+    "title": "Identidad de Marca Completa | EXO Digital Studio",
+    "description": "Construye una marca memorable que conecte con tu audiencia. Logo profesional, paleta de colores, tipografía y manual de identidad completo.",
+    "keywords": "diseño de logo, identidad de marca, branding, identidad corporativa, diseño gráfico Perú",
+    "ogImage": "./src/images/products/identidad-marca/og.jpg"
+  }
+}

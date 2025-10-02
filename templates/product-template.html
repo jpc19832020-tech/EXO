@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>{{metaTitle}}</title>
+  <meta name="description" content="{{metaDescription}}">
+  <meta name="keywords" content="{{metaKeywords}}">
+  <meta name="author" content="EXO Digital Studio">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="{{metaTitle}}">
+  <meta property="og:description" content="{{metaDescription}}">
+  <meta property="og:image" content="{{metaOgImage}}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="EXO Digital Studio">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{metaTitle}}">
+  <meta name="twitter:description" content="{{metaDescription}}">
+  <meta name="twitter:image" content="{{metaOgImage}}">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="../EXOlogo.png">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../src/styles/main.css">
+  <link rel="stylesheet" href="../src/styles/product-page.css">
+</head>
+<body>
+  <!-- Navegación de regreso -->
+  <a href="../index.html" class="back-to-products">Volver a Productos</a>
+  
+  <!-- Hero de Producto -->
+  <section class="product-hero">
+    <div class="product-hero-background">
+      <img src="{{heroImage}}" alt="{{title}}">
+    </div>
+    <div class="product-hero-content">
+      <span class="product-hero-category">{{category}}</span>
+      <h1 class="product-hero-title">{{title}}</h1>
+      <p class="product-hero-description">{{shortDescription}}</p>
+      <div class="product-hero-cta">
+        <a href="{{ctaUrl}}" class="btn btn-primary" target="_blank" rel="noopener">{{ctaText}}</a>
+        <a href="{{ctaSecondaryUrl}}" class="btn btn-secondary" target="_blank" rel="noopener">{{ctaSecondaryText}}</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Descripción Completa -->
+  <section class="product-section">
+    <div class="container">
+      <h2 class="product-section-title">¿Qué Incluye?</h2>
+      <div class="product-full-description">
+        {{description}}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Beneficios -->
+  <section class="product-section" style="background: var(--color-bg-secondary);">
+    <div class="container">
+      <h2 class="product-section-title">Beneficios Clave</h2>
+      <div class="benefits-grid">
+        {{benefits}}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Características -->
+  <section class="product-section">
+    <div class="container">
+      <h2 class="product-section-title">Características</h2>
+      <div class="features-grid">
+        {{features}}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Proceso -->
+  <section class="product-section" style="background: var(--color-bg-secondary);">
+    <div class="container">
+      <h2 class="product-section-title">Nuestro Proceso</h2>
+      <div class="process-timeline">
+        {{process}}
+      </div>
+    </div>
+  </section>
+  
+  <!-- Precio y CTA -->
+  <section class="product-section">
+    <div class="container">
+      <div class="product-pricing">
+        <div class="pricing-label">{{priceLabel}}</div>
+        <div class="pricing-amount">{{priceAmount}}</div>
+        <div class="pricing-period">{{priceCurrency}}{{pricePeriod}}</div>
+        <div class="pricing-delivery">Tiempo de entrega: {{deliveryTime}}</div>
+        <div class="pricing-cta">
+          <a href="{{ctaUrl}}" class="btn btn-primary" target="_blank" rel="noopener">{{ctaText}}</a>
+          <a href="{{ctaSecondaryUrl}}" class="btn btn-secondary" target="_blank" rel="noopener">{{ctaSecondaryText}}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Redes Sociales y Contacto -->
+  <section class="product-section" style="background: var(--color-bg-secondary);">
+    <div class="container">
+      <div class="product-social">
+        <h2 class="product-social-title">¿Listo para Comenzar?</h2>
+        <p class="product-social-text">Contáctanos por cualquiera de nuestros canales</p>
+        <div class="product-social-links">
+          <a href="https://wa.me/51925475680" class="social-link" target="_blank" rel="noopener">
+            📱 WhatsApp
+          </a>
+          <a href="mailto:exo.digitalstudio@gmail.com" class="social-link" target="_blank" rel="noopener">
+            📧 Email
+          </a>
+          <a href="https://www.instagram.com/exo_digitalstudio/" class="social-link" target="_blank" rel="noopener">
+            📸 Instagram
+          </a>
+          <a href="https://www.facebook.com/profile.php?id=61581476738289" class="social-link" target="_blank" rel="noopener">
+            📘 Facebook
+          </a>
+          <a href="https://www.tiktok.com/@exodigitalstudio" class="social-link" target="_blank" rel="noopener">
+            🎵 TikTok
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>EXO Digital Studio</h3>
+          <p>Innovación que Conecta</p>
+          <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-top: var(--spacing-md);">
+            Creamos Historias • Inspiramos Cambios • Elevamos Marcas
+          </p>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Contacto</h3>
+          <ul>
+            <li>📱 <a href="https://wa.me/51925475680">+51 925 475 680</a></li>
+            <li>📧 <a href="mailto:exo.digitalstudio@gmail.com">exo.digitalstudio@gmail.com</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-section">
+          <h3>Síguenos</h3>
+          <div class="social-links">
+            <a href="https://www.instagram.com/exo_digitalstudio/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a href="https://www.facebook.com/profile.php?id=61581476738289" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+            <a href="https://www.tiktok.com/@exodigitalstudio" class="social-icon" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>&copy; 2025 EXO Digital Studio. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+  
+  <!-- Scripts -->
+  <script src="../src/scripts/utils.js"></script>
+</body>
+</html>

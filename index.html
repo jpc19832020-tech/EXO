@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- SEO Meta Tags -->
+  <title>EXO Digital Studio | Innovación que Conecta</title>
+  <meta name="description" content="Creamos historias, inspiramos cambios y elevamos marcas. Estudio digital especializado en diseño web, branding y marketing digital.">
+  <meta name="keywords" content="diseño web, branding, desarrollo web, marketing digital, identidad de marca, Perú">
+  <meta name="author" content="EXO Digital Studio">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="EXO Digital Studio | Innovación que Conecta">
+  <meta property="og:description" content="Creamos historias, inspiramos cambios y elevamos marcas.">
+  <meta property="og:image" content="./EXOlogo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://exodigitalstudio.github.io/EXO/">
+  <meta property="og:site_name" content="EXO Digital Studio">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="EXO Digital Studio">
+  <meta name="twitter:description" content="Innovación que Conecta">
+  <meta name="twitter:image" content="./EXOlogo.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="./EXOlogo.png">
+  
+  <!-- Preconnect para fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="./src/styles/main.css">
+  <link rel="stylesheet" href="./src/styles/intro.css">
+  <link rel="stylesheet" href="./src/styles/products.css">
+</head>
+<body class="intro-active">
+  
+  <!-- Contenido Principal (oculto durante intro) -->
+  <main id="main-content" class="content-hidden">
+    
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
+        <div class="logo-container">
+          <img src="./EXOlogo.png" alt="EXO Digital Studio" class="logo">
+        </div>
+        <h1 class="hero-title">
+          <span class="text-gradient">EXO Digital Studio</span>
+        </h1>
+        <p class="hero-subtitle">
+          Innovación que Conecta
+        </p>
+        <p class="hero-subtitle" style="font-size: var(--text-lg); max-width: 600px; margin: 0 auto var(--spacing-xl);">
+          Creamos Historias • Inspiramos Cambios • Elevamos Marcas
+        </p>
+        <div class="hero-cta">
+          <a href="#productos" class="btn btn-primary" onclick="Utils.smoothScrollTo('productos')">Ver Productos</a>
+          <a href="https://wa.me/51925475680?text=Hola, me gustaría conocer más sobre sus servicios" class="btn btn-secondary" target="_blank" rel="noopener">Contáctanos</a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección Sobre Nosotros -->
+    <section class="product-section" style="background: var(--color-bg-secondary);">
+      <div class="container">
+        <h2 class="section-title">¿Quiénes Somos?</h2>
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <p style="font-size: var(--text-lg); line-height: 1.8; color: var(--color-text-secondary); margin-bottom: var(--spacing-lg);">
+            Somos un estudio digital especializado en transformar ideas en experiencias digitales memorables. 
+            Combinamos creatividad, estrategia y tecnología para ayudar a marcas y negocios a destacar en el mundo digital.
+          </p>
+          <p style="font-size: var(--text-base); line-height: 1.8; color: var(--color-text-secondary);">
+            Nuestro enfoque se centra en entender profundamente tu negocio y tus objetivos para crear soluciones 
+            que no solo se vean increíbles, sino que generen resultados reales y medibles.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección de Productos -->
+    <section id="productos" class="products-section">
+      <div class="container">
+        <div class="products-header">
+          <h2 class="products-title">Nuestros Servicios</h2>
+          <p class="products-description">
+            Soluciones digitales diseñadas para impulsar tu negocio
+          </p>
+        </div>
+        
+        <!-- Grid de productos (cargado dinámicamente) -->
+        <div id="products-grid" class="products-grid">
+          <!-- Los productos se cargan dinámicamente con JavaScript -->
+          <div class="products-loading">
+            <div class="loading-spinner"></div>
+            <p>Cargando servicios...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Sección de Contacto -->
+    <section class="product-section" style="background: var(--color-bg-secondary);">
+      <div class="container">
+        <h2 class="section-title">¿Tienes un Proyecto en Mente?</h2>
+        <div style="max-width: 600px; margin: 0 auto; text-align: center;">
+          <p style="font-size: var(--text-lg); line-height: 1.8; color: var(--color-text-secondary); margin-bottom: var(--spacing-xl);">
+            Estamos listos para ayudarte a hacer realidad tu visión digital. 
+            Contáctanos y conversemos sobre cómo podemos trabajar juntos.
+          </p>
+          <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap; margin-bottom: var(--spacing-xl);">
+            <a href="https://wa.me/51925475680?text=Hola, me gustaría conocer más sobre sus servicios" class="btn btn-primary" target="_blank" rel="noopener">
+              📱 WhatsApp
+            </a>
+            <a href="mailto:exo.digitalstudio@gmail.com" class="btn btn-secondary" target="_blank" rel="noopener">
+              📧 Email
+            </a>
+          </div>
+          
+          <!-- Redes Sociales -->
+          <div style="display: flex; gap: var(--spacing-md); justify-content: center; flex-wrap: wrap;">
+            <a href="https://www.instagram.com/exo_digitalstudio/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">
+              📸
+            </a>
+            <a href="https://www.facebook.com/profile.php?id=61581476738289" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">
+              📘
+            </a>
+            <a href="https://www.tiktok.com/@exodigitalstudio" class="social-icon" target="_blank" rel="noopener" aria-label="TikTok">
+              🎵
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>EXO Digital Studio</h3>
+            <p>Innovación que Conecta</p>
+            <p style="color: var(--color-text-muted); font-size: var(--text-sm); margin-top: var(--spacing-md);">
+              Creamos Historias • Inspiramos Cambios • Elevamos Marcas
+            </p>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Contacto</h3>
+            <ul>
+              <li>📱 <a href="https://wa.me/51925475680">+51 925 475 680</a></li>
+              <li>📧 <a href="mailto:exo.digitalstudio@gmail.com">exo.digitalstudio@gmail.com</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Servicios</h3>
+            <ul>
+              <li><a href="./productos/diseno-web-premium.html">Diseño Web</a></li>
+              <li><a href="./productos/identidad-marca.html">Branding</a></li>
+              <li><a href="./productos/gestion-redes.html">Marketing Digital</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-section">
+            <h3>Síguenos</h3>
+            <div class="social-links">
+              <a href="https://www.instagram.com/exo_digitalstudio/" class="social-icon" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+              <a href="https://www.facebook.com/profile.php?id=61581476738289" class="social-icon" target="_blank" rel="noopener" aria-label="Facebook">📘</a>
+              <a href="https://www.tiktok.com/@exodigitalstudio" class="social-icon" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="footer-bottom">
+          <p>&copy; 2025 EXO Digital Studio. Todos los derechos reservados.</p>
+        </div>
+      </div>
+    </footer>
+    
+  </main>
+  
+  <!-- Scripts -->
+  <script src="./src/scripts/utils.js"></script>
+  <script src="./src/scripts/intro.js"></script>
+  <script src="./src/scripts/products.js"></script>
+  
+</body>
+</html>

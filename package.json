@@ -1,0 +1,21 @@
+{
+  "name": "exo-digital-studio",
+  "version": "1.0.0",
+  "description": "Sitio web profesional para EXO Digital Studio con intro épica y sistema modular de productos",
+  "main": "build-products.js",
+  "scripts": {
+    "build": "node build-products.js",
+    "dev": "npm run build && python -m http.server 8000",
+    "deploy": "npm run build"
+  },
+  "keywords": [
+    "github-pages",
+    "website",
+    "products",
+    "portfolio"
+  ],
+  "author": "EXO Digital Studio",
+  "license": "MIT",
+  "devDependencies": {},
+  "dependencies": {}
+}

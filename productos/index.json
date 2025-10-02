@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2025-10-02T20:57:58.554Z",
+  "totalProducts": 3,
+  "products": [
+    {
+      "id": "diseno-web-premium",
+      "title": "Diseño Web Premium",
+      "slug": "diseno-web-premium",
+      "category": "Diseño Web",
+      "url": "./productos/diseno-web-premium.html"
+    },
+    {
+      "id": "gestion-redes",
+      "title": "Gestión de Redes Sociales",
+      "slug": "gestion-redes",
+      "category": "Marketing Digital",
+      "url": "./productos/gestion-redes.html"
+    },
+    {
+      "id": "identidad-marca",
+      "title": "Identidad de Marca Completa",
+      "slug": "identidad-marca",
+      "category": "Branding",
+      "url": "./productos/identidad-marca.html"
+    }
+  ]
+}
