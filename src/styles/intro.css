@@ -1,6 +1,6 @@
 /* ============================================
-   INTRO ÉPICA - ANIMACIÓN TIPOGRÁFICA
-   Con Barra de Carga y Fondo Negro
+   INTRO ÉPICA - SECUENCIA COMPLETA
+   Barra de Carga + Frases Animadas
    ============================================ */
 
 /* Overlay principal */
@@ -11,22 +11,28 @@
   width: 100vw;
   height: 100vh;
   z-index: 9999;
-  background: #000000;  /* Negro puro */
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   opacity: 1;
-  transition: opacity 1s ease-out;
+  transition: background 0.8s ease-in-out, opacity 1s ease-out;
 }
 
+/* Transición a fondo negro */
+#intro-overlay.black-background {
+  background: #000000;
+}
+
+/* Fade out final */
 #intro-overlay.fade-out {
   opacity: 0;
   pointer-events: none;
 }
 
 /* ============================================
-   FASE 1: PANTALLA DE CARGA
+   FASE 1-2: PANTALLA DE CARGA
    ============================================ */
 
 .intro-loading-container {
@@ -34,15 +40,12 @@
   flex-direction: column;
   align-items: center;
   gap: 2rem;
+  opacity: 1;
+  transition: opacity 1s ease-out;
+}
+
+.intro-loading-container.fade-out {
   opacity: 0;
-}
-
-.intro-loading-container.active {
-  animation: fadeIn 0.5s ease-out forwards;
-}
-
-.intro-loading-container.exit {
-  animation: fadeOut 0.5s ease-out forwards;
 }
 
 /* Logo de carga */
@@ -51,6 +54,18 @@
   height: auto;
   filter: drop-shadow(0 4px 20px rgba(0, 212, 255, 0.3))
           drop-shadow(0 2px 10px rgba(255, 0, 110, 0.2));
+  animation: logoFadeIn 0.6s ease-out forwards;
+}
+
+@keyframes logoFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 /* Barra de carga */
@@ -61,14 +76,26 @@
   border-radius: 2px;
   overflow: hidden;
   position: relative;
+  animation: barFadeIn 0.6s ease-out 0.2s forwards;
+  opacity: 0;
 }
 
+@keyframes barFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Progreso de la barra - Animación de 3 segundos */
 .intro-loading-progress {
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #00d4ff, #ff006e);
+  background: linear-gradient(90deg, #00d4ff 0%, #ff006e 100%);
   border-radius: 2px;
-  animation: loadingProgress 2s ease-out forwards;
+  animation: loadingProgress 3s ease-out forwards;
 }
 
 @keyframes loadingProgress {
@@ -81,7 +108,7 @@
 }
 
 /* ============================================
-   FASE 2: FRASES ANIMADAS
+   FASE 4-6: FRASES ANIMADAS
    ============================================ */
 
 .intro-texts-container {
@@ -92,78 +119,65 @@
   align-items: center;
   justify-content: center;
   opacity: 0;
+  pointer-events: none;
 }
 
 .intro-texts-container.active {
   opacity: 1;
 }
 
-/* Contenedor de texto animado */
+/* Texto individual */
 .intro-text {
-  font-family: var(--font-display), sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2rem, 8vw, 5rem);
-  font-weight: 900;
+  font-weight: 700;
   text-align: center;
-  color: transparent;
-  background: linear-gradient(135deg, #00d4ff, #ff006e);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
+  text-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
   letter-spacing: -0.02em;
   line-height: 1.1;
   padding: 0 2rem;
   position: absolute;
   opacity: 0;
-  transform: translateY(30px);
+  max-width: 90vw;
 }
 
-/* Estados de animación */
+/* Animación de frase - Duración total 3.1s */
 .intro-text.active {
-  animation: textFadeInOut 2s ease-out forwards;
+  animation: phraseAnimation 3.1s ease-out forwards;
 }
 
-/* Animaciones de texto */
-@keyframes textFadeInOut {
+@keyframes phraseAnimation {
+  /* 0s - 0.6s: Fade in + Scale */
   0% {
     opacity: 0;
-    transform: translateY(30px);
+    transform: scale(0.8) translateY(30px);
   }
-  15% {
+  19.35% {  /* 0.6s de 3.1s */
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
-  85% {
+  /* 0.6s - 2.6s: Hold (visible) */
+  83.87% {  /* 2.6s de 3.1s */
     opacity: 1;
-    transform: translateY(0);
+    transform: scale(1) translateY(0);
   }
+  /* 2.6s - 3.1s: Fade out + Move up */
   100% {
     opacity: 0;
-    transform: translateY(-30px);
-  }
-}
-
-/* Animaciones generales */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
+    transform: scale(1) translateY(-20px);
   }
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+@media (max-width: 1024px) {
+  .intro-text {
+    font-size: clamp(1.8rem, 6vw, 4rem);
+  }
+}
 
 @media (max-width: 768px) {
   .intro-loading-logo {
@@ -200,43 +214,45 @@
 
 @media (prefers-reduced-motion: reduce) {
   #intro-overlay {
-    animation: none;
     transition: opacity 0.3s ease;
   }
   
   .intro-loading-progress {
-    animation: simpleFill 0.5s ease forwards !important;
+    animation: simpleFill 1s ease forwards !important;
   }
   
-  .intro-text {
+  .intro-text.active {
     animation: simpleFade 0.5s ease forwards !important;
   }
   
-  .intro-loading-container.active,
-  .intro-loading-container.exit {
-    animation: simpleFade 0.3s ease forwards !important;
+  .intro-loading-logo {
+    animation: simpleFadeIn 0.3s ease forwards !important;
+  }
+  
+  .intro-loading-bar {
+    animation: simpleFadeIn 0.3s ease 0.1s forwards !important;
   }
   
   @keyframes simpleFill {
-    from {
-      width: 0%;
-    }
-    to {
-      width: 100%;
-    }
+    from { width: 0%; }
+    to { width: 100%; }
   }
   
   @keyframes simpleFade {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  @keyframes simpleFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
   }
 }
 
-/* Prevención de flash de contenido */
+/* ============================================
+   PREVENCIÓN DE FLASH
+   ============================================ */
+
 .content-hidden {
   opacity: 0;
   visibility: hidden;
@@ -254,5 +270,27 @@
   }
   to {
     opacity: 1;
+  }
+}
+
+/* ============================================
+   ANIMACIONES AUXILIARES
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
   }
 }

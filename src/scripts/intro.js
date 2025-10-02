@@ -1,6 +1,6 @@
 /**
  * INTRO ÉPICA - CONTROLADOR DE ANIMACIÓN
- * Sistema de animación con barra de carga y frases tipográficas
+ * Secuencia completa: Carga → Transición → Frases
  */
 
 class IntroController {
@@ -13,10 +13,16 @@ class IntroController {
       'INSPIRAMOS CAMBIOS',
       'ELEVAMOS MARCAS'
     ];
-    this.currentTextIndex = 0;
-    this.loadingDuration = 2000; // 2 segundos para la barra de carga
-    this.textDuration = 2000; // 2 segundos por texto
-    this.fadeOutDuration = 1000; // 1 segundo para fade out
+    
+    // Duraciones en milisegundos (según especificaciones)
+    this.durations = {
+      loading: 3000,           // Fase 1: Barra de carga
+      fadeOutLoading: 1000,    // Fase 2: Fade out logo/barra
+      transitionToBlack: 800,  // Fase 3: Transición a negro
+      phraseAnimation: 3100,   // Fase 4-6: Cada frase (0.6s in + 2s hold + 0.5s out)
+      finalFadeOut: 1000       // Fade out final
+    };
+    
     this.isReducedMotion = false;
     
     this.init();
@@ -46,11 +52,15 @@ class IntroController {
     const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
     this.isReducedMotion = mediaQuery.matches;
     
-    // Ajustar duraciones si hay reduced motion
+    // Ajustar duraciones para reduced motion
     if (this.isReducedMotion) {
-      this.loadingDuration = 500;
-      this.textDuration = 500;
-      this.fadeOutDuration = 300;
+      this.durations = {
+        loading: 1000,
+        fadeOutLoading: 300,
+        transitionToBlack: 300,
+        phraseAnimation: 500,
+        finalFadeOut: 300
+      };
     }
   }
   
@@ -63,7 +73,7 @@ class IntroController {
     this.overlay.setAttribute('role', 'presentation');
     this.overlay.setAttribute('aria-live', 'polite');
     
-    // Crear contenedor de carga
+    // Contenedor de carga (Fase 1-2)
     this.loadingContainer = document.createElement('div');
     this.loadingContainer.className = 'intro-loading-container';
     
@@ -82,13 +92,14 @@ class IntroController {
     this.loadingContainer.appendChild(logo);
     this.loadingContainer.appendChild(loadingBar);
     
-    // Crear contenedor de textos
+    // Contenedor de textos (Fase 4-6)
     this.textsContainer = document.createElement('div');
     this.textsContainer.className = 'intro-texts-container';
     
-    this.texts.forEach(text => {
+    this.texts.forEach((text, index) => {
       const textElement = document.createElement('div');
       textElement.className = 'intro-text';
+      textElement.setAttribute('data-text', index + 1);
       textElement.textContent = text;
       textElement.setAttribute('aria-label', text);
       this.textsContainer.appendChild(textElement);
@@ -117,19 +128,36 @@ class IntroController {
   }
   
   /**
-   * Animación completa
+   * Animación completa según especificaciones
    */
   async runFullIntro() {
-    // Fase 1: Barra de carga
-    await this.runLoadingPhase();
+    // FASE 1: Mostrar barra de carga (3s)
+    await this.wait(this.durations.loading);
     
-    // Fase 2: Frases animadas
-    await this.runTextsPhase();
+    // FASE 2: Fade out logo y barra simultáneamente (1s)
+    this.loadingContainer.classList.add('fade-out');
+    await this.wait(this.durations.fadeOutLoading);
     
-    // Fade out completo
-    await this.fadeOut();
+    // Ocultar contenedor de carga
+    this.loadingContainer.style.display = 'none';
     
-    // Limpiar
+    // FASE 3: Transición a fondo negro (0.8s)
+    this.overlay.classList.add('black-background');
+    await this.wait(this.durations.transitionToBlack);
+    
+    // Mostrar contenedor de textos
+    this.textsContainer.classList.add('active');
+    
+    // FASE 4-6: Animar cada frase (3.1s cada una)
+    for (let i = 0; i < this.texts.length; i++) {
+      await this.showPhrase(i);
+    }
+    
+    // FADE OUT FINAL: (1s)
+    this.overlay.classList.add('fade-out');
+    await this.wait(this.durations.finalFadeOut);
+    
+    // CLEANUP
     this.cleanup();
   }
   
@@ -137,56 +165,29 @@ class IntroController {
    * Animación simple para reduced motion
    */
   async runSimpleIntro() {
-    // Mostrar logo brevemente
-    await this.runLoadingPhase();
+    // Versión simplificada
+    await this.wait(this.durations.loading);
+    this.loadingContainer.classList.add('fade-out');
+    await this.wait(this.durations.fadeOutLoading);
     
-    // Mostrar una frase
-    await this.showText(0);
+    this.loadingContainer.style.display = 'none';
+    this.overlay.classList.add('black-background');
+    await this.wait(this.durations.transitionToBlack);
     
-    // Fade out
-    await this.fadeOut();
+    // Mostrar solo primera frase
+    this.textsContainer.classList.add('active');
+    await this.showPhrase(0);
+    
+    this.overlay.classList.add('fade-out');
+    await this.wait(this.durations.finalFadeOut);
+    
     this.cleanup();
   }
   
   /**
-   * Ejecutar fase de carga
+   * Mostrar una frase individual
    */
-  runLoadingPhase() {
-    return new Promise((resolve) => {
-      // Mostrar contenedor de carga
-      this.loadingContainer.classList.add('active');
-      
-      // Esperar a que termine la animación de la barra
-      setTimeout(() => {
-        this.loadingContainer.classList.remove('active');
-        this.loadingContainer.classList.add('exit');
-        
-        // Esperar fade out
-        setTimeout(() => {
-          this.loadingContainer.style.display = 'none';
-          resolve();
-        }, 500);
-      }, this.loadingDuration);
-    });
-  }
-  
-  /**
-   * Ejecutar fase de textos
-   */
-  async runTextsPhase() {
-    // Mostrar contenedor de textos
-    this.textsContainer.classList.add('active');
-    
-    // Animar cada texto secuencialmente
-    for (let i = 0; i < this.texts.length; i++) {
-      await this.showText(i);
-    }
-  }
-  
-  /**
-   * Mostrar un texto individual
-   */
-  showText(index) {
+  showPhrase(index) {
     return new Promise((resolve) => {
       const textElements = this.textsContainer.querySelectorAll('.intro-text');
       const textElement = textElements[index];
@@ -199,25 +200,19 @@ class IntroController {
       // Activar animación
       textElement.classList.add('active');
       
-      // Remover después de la duración
+      // Esperar a que termine la animación completa (3.1s)
       setTimeout(() => {
         textElement.classList.remove('active');
         resolve();
-      }, this.textDuration);
+      }, this.durations.phraseAnimation);
     });
   }
   
   /**
-   * Fade out del overlay completo
+   * Utilidad para esperar
    */
-  fadeOut() {
-    return new Promise((resolve) => {
-      this.overlay.classList.add('fade-out');
-      
-      setTimeout(() => {
-        resolve();
-      }, this.fadeOutDuration);
-    });
+  wait(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
   }
   
   /**
@@ -241,7 +236,7 @@ class IntroController {
       }
     }, 500);
     
-    // Disparar evento personalizado para indicar que la intro terminó
+    // Disparar evento personalizado
     window.dispatchEvent(new CustomEvent('introComplete'));
   }
 }
